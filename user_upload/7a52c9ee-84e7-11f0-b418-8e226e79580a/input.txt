@@ -1,0 +1,16 @@
+file 'istockphoto-1007530412-612x612.jpg'
+duration 1
+file 'pexels-anjana-c-169994-674010.jpg'
+duration 1
+file 'pexels-david-besh-884788.jpg'
+duration 1
+file 'pexels-jill-wellington-1638660-40192.jpg'
+duration 1
+file 'istockphoto-1007530412-612x612.jpg'
+duration 1
+file 'pexels-anjana-c-169994-674010.jpg'
+duration 1
+file 'pexels-david-besh-884788.jpg'
+duration 1
+file 'pexels-jill-wellington-1638660-40192.jpg'
+duration 1
