@@ -8,7 +8,7 @@
 
 {% block content %}
 <h1 class="gallery-title">Reel Gallery</h1>
-<div class="container gallery-container relative">
+    <div class="container gallery-container relative">
 
         <div class="gallery-item absolute">
             <div class="reel-card">
@@ -26,10 +26,12 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="gallery-item absolute">
+        <div class="gallery-item absolute">
             <div class="reel-card">
                 <div class="reel-thumbnail">
-                    <img src="{{ url_for('static', filename='2.jpg') }}" alt="Reel thumbnail">
+                    {% for img in images %}
+                        <img src="{{ url_for('static', filename='projectimages/' ~ img) }}" alt="Random Image" class="showcase-image">
+                    {% endfor %}
                     <div class="play-overlay">
                         <i class="fas fa-play"></i>
                     </div>
@@ -39,14 +41,53 @@
                     <p>Created by: Creator456</p>
                 </div>
             </div>
-        </div> -->
-
-        <div class="gallery-item-video ">
-        {% for reel in reels %}
-            <video src="/static/reels/{{reel}}" controls class="reelvideo"></video>
-            <i class="fas fa-play"></i>
-        {% endfor%}
         </div>
+        {% for reel in reels %}
+        <div class="gallery-item-video ">        
+            <video src="/static/reels/{{reel}}" controls class="reelvideo"></video>
+            <div class="button-div">
+                <button onclick="downloadVideo('{{ reel }}')" class="Download-btn">Download</button>
+                <button onclick="deleteVideo('{{ reel }}')" class="Delete-btn">Delete</button>
+            </div>        
+        </div>
+        {% endfor%}
     </div>
-</div>
+<script>
+    function downloadVideo(filename) {
+      fetch('/save_video', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ filename: filename })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message); 
+      })
+      .catch(error => console.error('Error:', error));
+    }
+
+    function deleteVideo(filename) {
+        if (!confirm("Are you sure you want to delete " + filename + "?")) return;
+
+        fetch('/delete_video', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ filename: filename })
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+
+        if (data.status === "success") {
+          // remove the video element from page without reload
+          document.querySelector(`video[src="/static/reels/${filename}"]`).parentElement.remove();
+        }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+
+
 {% endblock %} 

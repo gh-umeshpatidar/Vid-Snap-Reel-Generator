@@ -24,13 +24,19 @@
 .gallery-item-video{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-    height: 500px;
-    width: 400px;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
     border-radius: 12px;
     gap: 2rem;
     padding: 1rem;
-    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item-video:hover
+{
+    transform: translateY(-5px);
 }
 .gallery-item {
     transition: transform 0.3s ease;
@@ -120,3 +126,38 @@
         grid-template-columns: 1fr;
     }
 } 
+
+.button-div{
+    display: flex;
+    direction: row;
+    flex-wrap: wrap; 
+    justify-content: space-evenly;
+    
+}
+.Download-btn {
+background-color: hsl(249, 100%, 65%);
+  color: white;               
+  padding: 10px 20px;          
+  border: none;                
+  border-radius: 25px;         
+  cursor: pointer;             
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+.Download-btn:hover {
+  background-color: #0d0376;   /* darker green on hover */
+}
+
+.Delete-btn {
+background-color: #fd4242;
+  color: white;               
+  padding: 10px 20px;          
+  border: none;                
+  border-radius: 25px;         
+  cursor: pointer;             
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+.Delete-btn:hover {
+  background-color: #ac0606;   /* darker green on hover */
+}
