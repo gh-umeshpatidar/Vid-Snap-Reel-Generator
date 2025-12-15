@@ -1,6 +1,0 @@
-file 'pexels-pixabay-326055.jpg'
-duration 1
-file 'pexels-anjana-c-169994-674010.jpg'
-duration 1
-file 'pexels-samandgos-709552.jpg'
-duration 1
